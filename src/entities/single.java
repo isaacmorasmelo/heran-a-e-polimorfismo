@@ -1,55 +1,34 @@
 package entities;
 
-public class single {
-    private String name;
-    private double anual_income;
-
-    private double Health_expenditures;
+public class single extends TaxPayer{
+    private double healthExpenditures;
 
     public single() {
+        super();
     }
 
-    public single(String name, double anual_income, double health_expenditures) {
-        this.name = name;
-        this.anual_income = anual_income;
-        Health_expenditures = health_expenditures;
+    public single( String name, double anualIncome, double healthExpenditures1) {
+        super(name, anualIncome);
+        this.healthExpenditures = healthExpenditures1;
     }
 
-    public double singleTax(){
-
-        if(anual_income > 20000 && Health_expenditures > 0){
-            return (anual_income * 0.25)-(Health_expenditures * 0.5);
-        }
-        else if(anual_income > 20000){
-            return anual_income * 0.25;
-        }
-        else{
-            return anual_income * 0.15;
+    public double SingleTax(){
+        if (healthExpenditures > 0){
+            return Tax()-healthExpenditures*0.5;
+        } else{
+            return Tax();
         }
     }
 
-
-    public String getName() {
-        return name;
+    public single(double healthExpenditures) {
+        this.healthExpenditures = healthExpenditures;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public double getHealthExpenditures() {
+        return healthExpenditures;
     }
 
-    public double getAnual_income() {
-        return anual_income;
-    }
-
-    public void setAnual_income(double anual_income) {
-        this.anual_income = anual_income;
-    }
-
-    public double getHealth_expenditures() {
-        return Health_expenditures;
-    }
-
-    public void setHealth_expenditures(double health_expenditures) {
-        Health_expenditures = health_expenditures;
+    public void setHealthExpenditures(double healthExpenditures) {
+        this.healthExpenditures = healthExpenditures;
     }
 }
