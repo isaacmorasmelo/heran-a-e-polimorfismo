@@ -5,10 +5,6 @@ public class desafio_Task extends desafio_Lesson{
     private String description;
     private int questionCount;
 
-    public desafio_Task() {
-
-    }
-
     public desafio_Task(String title, String description, int questionCount) {
         super(title);
         this.description = description;

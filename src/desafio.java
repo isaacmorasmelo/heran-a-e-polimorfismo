@@ -10,12 +10,13 @@ public class desafio {
         Scanner sc = new Scanner(System.in);
 
         List<desafio_Lesson> list = new ArrayList<>();
-        desafio_Task desafio_task = new desafio_Task();
 
-        System.out.print("Quantas aulas tem o curso? "); int quantity = sc.nextInt();
+        System.out.print("Quantas aulas tem o curso? ");
+        int quantity = sc.nextInt();
 
+        System.out.println();
         for (int i = 0; i < quantity; i++) {
-            System.out.println("Dados da" + (i+1) + "a aula:");
+            System.out.println("Dados da " + (i+1) + "a aula:");
             System.out.print("Conteúdo ou tarefa (c/t)? ");
             char ct = sc.next().charAt(0);
 
@@ -26,22 +27,28 @@ public class desafio {
 
             if (ct == 'c'){
                 System.out.print("URL do vídeo: ");
-                sc.nextLine();
                 String Url = sc.nextLine();
 
-                System.out.println("Duração em segundos: ");
+                System.out.print("Duração em segundos: ");
                 int seconds = sc.nextInt();
-                list.add(new desafio_Task(name,Url,seconds));
+                list.add(new desafio_Video(name,Url,seconds));
             }
             else if(ct == 't'){
-                System.out.println("Descrição: ");
-                sc.nextLine();
+                System.out.print("Descrição: ");
                 String description = sc.nextLine();
 
-                System.out.println("Quantidade de questões: ");
+                System.out.print("Quantidade de questões: ");
                 int quantityQuestions = sc.nextInt();
-                list.add(new desafio_Video(name,description,quantityQuestions));
+                list.add(new desafio_Task(name,description,quantityQuestions));
             }
+            System.out.println();
         }
+
+        int sum = 0;
+        for (desafio_Lesson e : list) {
+            sum += e.duration();
+        }
+
+        System.out.println("DURAÇÃO TOTAL DO CURSO = " + sum + " segundos");
     }
 }

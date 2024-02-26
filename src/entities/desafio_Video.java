@@ -31,4 +31,5 @@ public class desafio_Video extends desafio_Lesson{
     public int duration() {
         return seconds;
     }
+
 }
